@@ -33,7 +33,7 @@ describe("emplace", () => {
     assertSpyCalls(get, 0);
     assertSpyCalls(set, 1);
 
-    assertSpyCallArgs(insert, 0, [KEY]);
+    assertSpyCallArgs(insert, 0, [KEY, map]);
     assertSpyCallArgs(has, 0, [KEY]);
     assertSpyCallArgs(set, 0, [KEY, INSERTED]);
   });
@@ -61,7 +61,7 @@ describe("emplace", () => {
     assertSpyCalls(get, 1);
     assertSpyCalls(set, 1);
 
-    assertSpyCallArgs(update, 0, [EXISTED, KEY]);
+    assertSpyCallArgs(update, 0, [EXISTED, KEY, map]);
     assertSpyCallArgs(has, 0, [KEY]);
     assertSpyCallArgs(set, 0, [KEY, UPDATED]);
   });

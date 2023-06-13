@@ -13,13 +13,18 @@ export interface MapLike<K, V> {
   set: (key: K, value: V) => void;
 }
 
-export interface EmplaceHandler<K, V> {
+export interface Insertable<K, V, T> {
   /** Add entry. */
-  insert: (key: K) => V;
-
-  /** Update the value. */
-  update: (existing: V, key: K) => V;
+  insert: (key: K, map: T) => V;
 }
+
+export interface Updatable<K, V, T> {
+  /** Update the value. */
+  update: (existing: V, key: K, map: T) => V;
+}
+
+export interface EmplaceHandler<K, V, T>
+  extends Insertable<K, V, T>, Updatable<K, V, T> {}
 
 /** Add a value to a {@link map} if it does not already have something at {@link key}, and will also update an existing value at {@link key}.
  *
@@ -80,31 +85,31 @@ export interface EmplaceHandler<K, V> {
  * assertType<IsExact<typeof result, number | undefined>>(true);
  * ```
  */
-export function emplace<K, V>(
-  map: Readonly<MapLike<K, V>>,
+export function emplace<K, V, M>(
+  map: Readonly<MapLike<K, V>> & M,
   key: K,
-  handler: Readonly<EmplaceHandler<K, V>>,
+  handler: Readonly<EmplaceHandler<K, V, M>>,
 ): V;
-export function emplace<K, V>(
-  map: Readonly<MapLike<K, V>>,
+export function emplace<K, V, M>(
+  map: Readonly<MapLike<K, V>> & M,
   key: K,
-  handler: Readonly<{ insert: (key: K) => V }>,
+  handler: Readonly<{ insert: (key: K, map: M) => V }>,
 ): V;
-export function emplace<K, V>(
-  map: Readonly<MapLike<K, V>>,
+export function emplace<K, V, M>(
+  map: Readonly<MapLike<K, V>> & M,
   key: K,
-  handler: Readonly<{ update: (existing: V, key: K) => V }>,
+  handler: Readonly<{ update: (existing: V, key: K, map: M) => V }>,
 ): V | undefined;
-export function emplace<K, V>(
-  map: Readonly<MapLike<K, V>>,
+export function emplace<K, V, M>(
+  map: Readonly<MapLike<K, V>> & M,
   key: K,
-  { update, insert }: Partial<EmplaceHandler<K, V>>,
+  { update, insert }: Partial<Readonly<EmplaceHandler<K, V, M>>>,
 ): V | undefined {
   if (map.has(key)) {
     const value = map.get(key)!;
 
     if (update) {
-      const updated = update(value, key);
+      const updated = update(value, key, map);
 
       map.set(key, updated);
 
@@ -115,7 +120,7 @@ export function emplace<K, V>(
   }
 
   if (insert) {
-    const inserted = insert(key);
+    const inserted = insert(key, map);
 
     map.set(key, inserted);
 
