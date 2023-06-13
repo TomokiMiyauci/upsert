@@ -65,4 +65,24 @@ describe("emplace", () => {
     assertSpyCallArgs(has, 0, [KEY]);
     assertSpyCallArgs(set, 0, [KEY, UPDATED]);
   });
+
+  it("should do nothing if the key is not exist and not provide insert", () => {
+    const map = new Map<string, number>();
+    const update = spy((existing: number) => existing + 1);
+
+    assertEquals(emplace(map, "", { update }), undefined);
+    assertEquals(map.size, 0);
+    assertSpyCalls(update, 0);
+  });
+
+  it("should do nothing if the key is exist and not provide update", () => {
+    const KEY = "";
+    const VALUE = 0;
+    const map = new Map<string, number>([[KEY, VALUE]]);
+    const insert = spy(() => 1);
+
+    assertEquals(emplace(map, KEY, { insert }), VALUE);
+    assertEquals(map.get(KEY), VALUE);
+    assertSpyCalls(insert, 0);
+  });
 });

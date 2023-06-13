@@ -42,11 +42,43 @@ export function emplace<K, V>(
   map: Readonly<MapLike<K, V>>,
   key: K,
   handler: Readonly<EmplaceHandler<K, V>>,
-): V {
-  const value = map.has(key)
-    ? handler.update(map.get(key)!, key)
-    : handler.insert(key);
-  map.set(key, value);
+): V;
+export function emplace<K, V>(
+  map: Readonly<MapLike<K, V>>,
+  key: K,
+  handler: Readonly<{ insert: (key: K) => V }>,
+): V;
+export function emplace<K, V>(
+  map: Readonly<MapLike<K, V>>,
+  key: K,
+  handler: Readonly<{ update: (existing: V, key: K) => V }>,
+): V | undefined;
+export function emplace<K, V>(
+  map: Readonly<MapLike<K, V>>,
+  key: K,
+  { update, insert }: Partial<EmplaceHandler<K, V>>,
+): V | undefined {
+  if (map.has(key)) {
+    const value = map.get(key)!;
 
-  return value;
+    if (update) {
+      const updated = update(value, key);
+
+      map.set(key, updated);
+
+      return updated;
+    } else {
+      return value;
+    }
+  }
+
+  if (insert) {
+    const inserted = insert(key);
+
+    map.set(key, inserted);
+
+    return inserted;
+  }
+
+  return;
 }
