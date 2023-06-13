@@ -8,9 +8,9 @@ import {
 } from "./emplace.ts";
 
 export function emplace<K, V>(
-  this: MapLike<K, V>,
+  this: Readonly<MapLike<K, V>>,
   key: K,
-  handler: EmplaceHandler<K, V>,
+  handler: Readonly<EmplaceHandler<K, V>>,
 ): V {
   return _emplace(this, key, handler);
 }
@@ -39,5 +39,10 @@ export function Emplaceable<
 /** Emplaceable API. */
 export interface Emplaceable<K, V> {
   /** Add a value to a map if the map does not already have something at {@link key}, and will also update an existing value at {@link key}. */
-  emplace: (key: K, handler: EmplaceHandler<K, V>) => V;
+  emplace(key: K, handler: EmplaceHandler<K, V>): V;
+  emplace(key: K, handler: { insert: (key: K) => V }): V;
+  emplace(
+    key: K,
+    handler: { update: (existing: V, key: K) => V },
+  ): V | undefined;
 }
