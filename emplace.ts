@@ -13,16 +13,19 @@ export interface MapLike<K, V> {
   set: (key: K, value: V) => void;
 }
 
+/** Insertable API. */
 export interface Insertable<K, V, T> {
   /** Add entry. */
   insert: (key: K, map: T) => V;
 }
 
+/** Updatable API. */
 export interface Updatable<K, V, T> {
   /** Update the value. */
   update: (existing: V, key: K, map: T) => V;
 }
 
+/** Handler for emplace. */
 export interface EmplaceHandler<K, V, T>
   extends Insertable<K, V, T>, Updatable<K, V, T> {}
 
