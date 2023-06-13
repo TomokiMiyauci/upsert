@@ -21,7 +21,23 @@ export interface EmplaceHandler<K, V> {
   update: (existing: V, key: K) => V;
 }
 
-/** Add a value to a {@link map} if it does not already have something at {@link key}, and will also update an existing value at {@link key}. */
+/** Add a value to a {@link map} if it does not already have something at {@link key}, and will also update an existing value at {@link key}.
+ *
+ * @example
+ * ```ts
+ * import { emplace } from "https://deno.land/x/upsert@$VERSION/emplace.ts";
+ * import { assert } from "https://deno.land/std/testing/asserts.ts";
+ *
+ * declare const map: Map<string, number>;
+ * declare const key: string;
+ *
+ * const result = emplace(map, key, {
+ *  insert: () => 0,
+ *  update: (existing) => existing + 1,
+ * });
+ * assert(map.has(key));
+ * ```
+ */
 export function emplace<K, V>(
   map: Readonly<MapLike<K, V>>,
   key: K,
