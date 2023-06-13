@@ -37,6 +37,48 @@ export interface EmplaceHandler<K, V> {
  * });
  * assert(map.has(key));
  * ```
+ *
+ * ## Just insert if missing
+ * You might omit an `update` if you're handling data that doesn't change, but can
+ * still be appended.
+ *
+ * ```ts
+ * import { emplace } from "https://deno.land/x/upsert@$VERSION/emplace.ts";
+ * import { assert } from "https://deno.land/std/testing/asserts.ts";
+ * import {
+ *  assertType,
+ *  type IsExact,
+ * } from "https://deno.land/std/testing/types.ts";
+ *
+ * declare const map: Map<string, number>;
+ * declare const key: string;
+ * declare const value: number;
+ *
+ * const result = emplace(map, key, { insert: () => value });
+ *
+ * assert(map.has(key));
+ * assertType<IsExact<typeof result, number>>(true);
+ * ```
+ *
+ * ## Just update if present
+ * You might want to omit an `insert` if you want to perform a function on all
+ * existing values.
+ *
+ * ```ts
+ * import { emplace } from "https://deno.land/x/upsert@$VERSION/emplace.ts";
+ * import { assert } from "https://deno.land/std/testing/asserts.ts";
+ * import {
+ *  assertType,
+ *  type IsExact,
+ * } from "https://deno.land/std/testing/types.ts";
+ *
+ * declare const map: Map<string, number>;
+ * declare const key: string;
+ *
+ * const result = emplace(map, key, { update: (existing) => existing + 1 });
+ *
+ * assertType<IsExact<typeof result, number | undefined>>(true);
+ * ```
  */
 export function emplace<K, V>(
   map: Readonly<MapLike<K, V>>,
