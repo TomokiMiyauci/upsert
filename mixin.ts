@@ -36,31 +36,6 @@ export function Emplaceable<
   };
 }
 
-/** {@link Map} with {@link Emplaceable} implementation.
- *
- * @example
- * ```ts
- * import { EmplaceableMap } from "https://deno.land/x/upsert@$VERSION/mod.ts";
- *
- * const map = new EmplaceableMap();
- * ```
- */
-export class EmplaceableMap<K, V>
-  extends /* @__PURE__ */ Emplaceable(Map)<K, V> {}
-
-/** {@link WeakMap} with {@link Emplaceable} implementation.
- *
- * @example
- * ```ts
- * import { EmplaceableWeakMap } from "https://deno.land/x/upsert@$VERSION/mod.ts";
- *
- * const weakMap = new EmplaceableWeakMap();
- * ```
- */
-// deno-lint-ignore ban-types
-export class EmplaceableWeakMap<K extends object, V>
-  extends /* @__PURE__ */ Emplaceable(WeakMap)<K, V> {}
-
 /** Emplaceable API. */
 export interface Emplaceable<K, V> {
   /** Add a value to a map if the map does not already have something at {@link key}, and will also update an existing value at {@link key}. */
