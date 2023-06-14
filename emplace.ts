@@ -96,23 +96,23 @@ export function emplace<K, V, M>(
 export function emplace<K, V, M>(
   map: Readonly<MapLike<K, V>> & M,
   key: K,
-  handler: Readonly<{ insert: (key: K, map: M) => V }>,
+  handler: Readonly<Insertable<K, V, M>>,
 ): V;
 export function emplace<K, V, M>(
   map: Readonly<MapLike<K, V>> & M,
   key: K,
-  handler: Readonly<{ update: (existing: V, key: K, map: M) => V }>,
+  handler: Readonly<Updatable<K, V, M>>,
 ): V | undefined;
 export function emplace<K, V, M>(
   map: Readonly<MapLike<K, V>> & M,
   key: K,
-  { update, insert }: Partial<Readonly<EmplaceHandler<K, V, M>>>,
+  handler: Readonly<Insertable<K, V, M> | Updatable<K, V, M>>,
 ): V | undefined {
   if (map.has(key)) {
     const value = map.get(key)!;
 
-    if (update) {
-      const updated = update(value, key, map);
+    if ("update" in handler) {
+      const updated = handler.update(value, key, map);
 
       map.set(key, updated);
 
@@ -122,8 +122,8 @@ export function emplace<K, V, M>(
     }
   }
 
-  if (insert) {
-    const inserted = insert(key, map);
+  if ("insert" in handler) {
+    const inserted = handler.insert(key, map);
 
     map.set(key, inserted);
 
