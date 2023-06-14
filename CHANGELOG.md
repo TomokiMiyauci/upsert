@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/TomokiMiyauci/upsert/compare/1.0.0...1.1.0) (2023-06-14)
+
+
+### Features
+
+* improve method overload signature ([db0d137](https://github.com/TomokiMiyauci/upsert/commit/db0d137f72d99f67a402241e16c57b6a6ac0279a))
+
 # [1.1.0-beta.1](https://github.com/TomokiMiyauci/upsert/compare/1.0.0...1.1.0-beta.1) (2023-06-14)
 
 
