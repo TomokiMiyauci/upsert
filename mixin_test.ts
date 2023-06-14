@@ -1,18 +1,24 @@
 // Copyright 2023-latest Tomoki Miyauchi. All rights reserved. MIT license.
 
 import { emplace, Emplaceable } from "./mixin.ts";
-import { assert, assertEquals, describe, it } from "./_dev_deps.ts";
+import {
+  assert,
+  assertEquals,
+  assertFalse,
+  describe,
+  it,
+} from "./_dev_deps.ts";
 
 describe("emplace", () => {
   it("should bind map and do emplace", () => {
     const map = new Map();
 
     assertEquals(
-      emplace.bind(map)("a", { insert: () => "a", update: () => "b" }),
-      "a",
+      emplace.bind(map)("a", { update: () => "b" }),
+      undefined,
     );
 
-    assert(map.has("a"));
+    assertFalse(map.has("a"));
   });
 });
 

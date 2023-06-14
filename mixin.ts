@@ -13,8 +13,23 @@ export function emplace<K, V, M>(
   this: Readonly<MapLike<K, V>> & M,
   key: K,
   handler: Readonly<EmplaceHandler<K, V, M>>,
-): V {
-  return _emplace(this, key, handler);
+): V;
+export function emplace<K, V, M>(
+  this: Readonly<MapLike<K, V>> & M,
+  key: K,
+  handler: Readonly<Insertable<K, V, M>>,
+): V;
+export function emplace<K, V, M>(
+  this: Readonly<MapLike<K, V>> & M,
+  key: K,
+  handler: Readonly<Updatable<K, V, M>>,
+): V | undefined;
+export function emplace<K, V, M>(
+  this: Readonly<MapLike<K, V>> & M,
+  key: K,
+  handler: Readonly<Insertable<K, V, M> | Updatable<K, V, M>>,
+): V | undefined {
+  return _emplace(this, key, handler as EmplaceHandler<K, V, M>);
 }
 
 /** Mixin for {@link emplace}.
