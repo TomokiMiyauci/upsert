@@ -149,6 +149,4 @@ See [deno doc](https://deno.land/x/upsert/mod.ts) for all APIs.
 
 ## License
 
-Copyright © 2023-present [Tomoki Miyauchi](https://github.com/TomokiMiyauci).
-
-Released under the [MIT](./LICENSE) license
+[MIT](LICENSE) © 2023 Tomoki Miyauchi
