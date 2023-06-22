@@ -1,10 +1,10 @@
 # upsert
 
 [![deno land](http://img.shields.io/badge/available%20on-deno.land/x-lightgrey.svg?logo=deno)](https://deno.land/x/upsert)
-[![deno doc](https://doc.deno.land/badge.svg)](https://deno.land/x/upsert/mod.ts)
+[![deno doc](https://doc.deno.land/badge.svg)](https://deno.land/x/upsert?doc)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/TomokiMiyauci/upsert)](https://github.com/TomokiMiyauci/upsert/releases)
 [![codecov](https://codecov.io/github/TomokiMiyauci/upsert/branch/main/graph/badge.svg)](https://codecov.io/gh/TomokiMiyauci/upsert)
-[![GitHub](https://img.shields.io/github/license/TomokiMiyauci/upsert)](https://github.com/TomokiMiyauci/upsert/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/TomokiMiyauci/upsert)](LICENSE)
 
 [![test](https://github.com/TomokiMiyauci/upsert/actions/workflows/test.yaml/badge.svg)](https://github.com/TomokiMiyauci/upsert/actions/workflows/test.yaml)
 [![NPM](https://nodei.co/npm/@miyauci/upsert.png?mini=true)](https://nodei.co/npm/@miyauci/upsert/)
@@ -145,7 +145,7 @@ assert(WeakMap.prototype.emplace);
 
 ## API
 
-See [deno doc](https://deno.land/x/upsert/mod.ts) for all APIs.
+See [deno doc](https://deno.land/x/upsert?doc) for all APIs.
 
 ## License
 
