@@ -56,7 +56,7 @@ declare const key: string;
 
 const result = emplace(map, key, {
   insert: () => 0,
-  update: (existing) => existing + 1,
+  update: (existing) => ++existing,
 });
 assert(map.has(key));
 ```
@@ -131,7 +131,7 @@ declare const key: string;
 
 map.emplace(key, {
   insert: () => 0,
-  update: (existing) => existing + 1,
+  update: (existing) => ++existing,
 });
 
 assert(map.has(key));

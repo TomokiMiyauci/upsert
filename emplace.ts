@@ -41,7 +41,7 @@ export interface EmplaceHandler<K, V, T>
  *
  * const result = emplace(map, key, {
  *  insert: () => 0,
- *  update: (existing) => existing + 1,
+ *  update: (existing) => ++existing,
  * });
  * assert(map.has(key));
  * ```
@@ -83,7 +83,7 @@ export interface EmplaceHandler<K, V, T>
  * declare const map: Map<string, number>;
  * declare const key: string;
  *
- * const result = emplace(map, key, { update: (existing) => existing + 1 });
+ * const result = emplace(map, key, { update: (existing) => ++existing });
  *
  * assertType<IsExact<typeof result, number | undefined>>(true);
  * ```
