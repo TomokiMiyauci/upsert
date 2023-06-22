@@ -36,7 +36,7 @@ export function emplace<K, V, M>(
  *
  * @example
  * ```ts
- * import { Emplaceable } from "https://deno.land/x/upsert@$VERSION/mixin.ts";
+ * import { Emplaceable } from "https://deno.land/x/upsert/mixin.ts";
  * import { assert } from "https://deno.land/std/testing/asserts.ts";
  *
  * class MyMap extends Emplaceable(Map) {}

@@ -4,7 +4,7 @@
 /** Polyfill affects the global object. You must be very careful when using it.
  * @example
  * ```ts
- * import "https://deno.land/x/upsert@$VERSION/polyfill.ts";
+ * import "https://deno.land/x/upsert/polyfill.ts";
  * import { assert } from "https://deno.land/std/testing/asserts.ts";
  *
  * assert(Map.prototype.emplace);

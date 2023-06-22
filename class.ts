@@ -7,7 +7,7 @@ import { Emplaceable } from "./mixin.ts";
  *
  * @example
  * ```ts
- * import { EmplaceableMap } from "https://deno.land/x/upsert@$VERSION/mod.ts";
+ * import { EmplaceableMap } from "https://deno.land/x/upsert/mod.ts";
  * import { assert } from "https://deno.land/std/testing/asserts.ts";
  *
  * const map = new EmplaceableMap<string, number>();
@@ -28,7 +28,7 @@ export class EmplaceableMap<K, V>
  *
  * @example
  * ```ts
- * import { EmplaceableWeakMap } from "https://deno.land/x/upsert@$VERSION/class.ts";
+ * import { EmplaceableWeakMap } from "https://deno.land/x/upsert/class.ts";
  *
  * const weakMap = new EmplaceableWeakMap();
  * ```

@@ -17,7 +17,7 @@ Maps for emplace, TC39
 deno.land:
 
 ```ts
-import * as mod from "https://deno.land/x/upsert@$VERSION/mod.ts";
+import * as mod from "https://deno.land/x/upsert/mod.ts";
 ```
 
 npm:
@@ -32,7 +32,7 @@ Add a value to a map like if it does not already have something at `key`, and
 will also update an existing value at `key`.
 
 ```ts
-import { emplace } from "https://deno.land/x/upsert@$VERSION/mod.ts";
+import { emplace } from "https://deno.land/x/upsert/mod.ts";
 import { assert } from "https://deno.land/std/testing/asserts.ts";
 
 declare const map: Map<string, number>;
@@ -51,7 +51,7 @@ You might omit an `update` if you're handling data that doesn't change, but can
 still be appended.
 
 ```ts
-import { emplace } from "https://deno.land/x/upsert@$VERSION/mod.ts";
+import { emplace } from "https://deno.land/x/upsert/mod.ts";
 import { assert } from "https://deno.land/std/testing/asserts.ts";
 import {
   assertType,
@@ -74,7 +74,7 @@ You might want to omit an `insert` if you want to perform a function on all
 existing values.
 
 ```ts
-import { emplace } from "https://deno.land/x/upsert@$VERSION/mod.ts";
+import { emplace } from "https://deno.land/x/upsert/mod.ts";
 import { assert } from "https://deno.land/std/testing/asserts.ts";
 import {
   assertType,
@@ -94,7 +94,7 @@ assertType<IsExact<typeof result, number | undefined>>(true);
 Mixin for [emplace](#emplace).
 
 ```ts
-import { Emplaceable } from "https://deno.land/x/upsert@$VERSION/mod.ts";
+import { Emplaceable } from "https://deno.land/x/upsert/mod.ts";
 import { assert } from "https://deno.land/std/testing/asserts.ts";
 
 class MyMap extends Emplaceable(Map) {}
@@ -107,7 +107,7 @@ assert(new MyMap().emplace);
 `Map` with [Emplaceable](#emplaceable) implementation.
 
 ```ts
-import { EmplaceableMap } from "https://deno.land/x/upsert@$VERSION/mod.ts";
+import { EmplaceableMap } from "https://deno.land/x/upsert/mod.ts";
 import { assert } from "https://deno.land/std/testing/asserts.ts";
 
 const map = new EmplaceableMap<string, number>();
@@ -126,7 +126,7 @@ assert(map.has(key));
 `WeakMap` with [Emplaceable](#emplaceable) implementation.
 
 ```ts
-import { EmplaceableWeakMap } from "https://deno.land/x/upsert@$VERSION/mod.ts";
+import { EmplaceableWeakMap } from "https://deno.land/x/upsert/mod.ts";
 
 const weakMap = new EmplaceableWeakMap();
 ```
@@ -136,7 +136,7 @@ const weakMap = new EmplaceableWeakMap();
 Polyfill affects the global object. You must be very careful when using it.
 
 ```ts
-import "https://deno.land/x/upsert@$VERSION/polyfill.ts";
+import "https://deno.land/x/upsert/polyfill.ts";
 import { assert } from "https://deno.land/std/testing/asserts.ts";
 
 assert(Map.prototype.emplace);

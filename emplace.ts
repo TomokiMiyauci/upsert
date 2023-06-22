@@ -33,7 +33,7 @@ export interface EmplaceHandler<K, V, T>
  *
  * @example
  * ```ts
- * import { emplace } from "https://deno.land/x/upsert@$VERSION/emplace.ts";
+ * import { emplace } from "https://deno.land/x/upsert/emplace.ts";
  * import { assert } from "https://deno.land/std/testing/asserts.ts";
  *
  * declare const map: Map<string, number>;
@@ -51,7 +51,7 @@ export interface EmplaceHandler<K, V, T>
  * still be appended.
  *
  * ```ts
- * import { emplace } from "https://deno.land/x/upsert@$VERSION/emplace.ts";
+ * import { emplace } from "https://deno.land/x/upsert/emplace.ts";
  * import { assert } from "https://deno.land/std/testing/asserts.ts";
  * import {
  *  assertType,
@@ -73,7 +73,7 @@ export interface EmplaceHandler<K, V, T>
  * existing values.
  *
  * ```ts
- * import { emplace } from "https://deno.land/x/upsert@$VERSION/emplace.ts";
+ * import { emplace } from "https://deno.land/x/upsert/emplace.ts";
  * import { assert } from "https://deno.land/std/testing/asserts.ts";
  * import {
  *  assertType,
