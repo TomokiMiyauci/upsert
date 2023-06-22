@@ -147,6 +147,10 @@ assert(WeakMap.prototype.emplace);
 
 See [deno doc](https://deno.land/x/upsert?doc) for all APIs.
 
+## Contributing
+
+See [contributing](CONTRIBUTING.md).
+
 ## License
 
 [MIT](LICENSE) © 2023 Tomoki Miyauchi
