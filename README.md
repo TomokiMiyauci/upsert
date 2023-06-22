@@ -12,6 +12,20 @@
 Maps for emplace, TC39
 [proposal-upsert](https://github.com/tc39/proposal-upsert) implementation.
 
+## Table of Contents <!-- omit in toc -->
+
+- [Install](#install)
+- [Usage](#usage)
+  - [Just insert if missing](#just-insert-if-missing)
+  - [Just update if present](#just-update-if-present)
+  - [Emplaceable](#emplaceable)
+  - [EmplaceableMap](#emplaceablemap)
+  - [EmplaceableWeakMap](#emplaceableweakmap)
+  - [Polyfill](#polyfill)
+- [API](#api)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Install
 
 deno.land:
