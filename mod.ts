@@ -1,7 +1,7 @@
 // Copyright © 2023 Tomoki Miyauchi. All rights reserved. MIT license.
 // This module is browser compatible.
 
-export { Emplaceable } from "./mixin.ts";
+export { Emplaceable, emplaceable } from "./mixin.ts";
 export {
   emplace,
   type EmplaceHandler,

@@ -143,10 +143,28 @@ assertEquals(map, new Map([[key, 1]]));
 Mixin for `emplace`.
 
 ```ts
-import { Emplaceable } from "https://deno.land/x/upsert/mod.ts";
+import { emplaceable } from "https://deno.land/x/upsert/mod.ts";
 import { assert } from "https://deno.land/std/testing/asserts.ts";
 
-class MyMap extends Emplaceable(Map) {}
+class MyMap extends emplaceable(Map) {}
+
+assert(MyMap.prototype.emplace);
+```
+
+decorator style:
+
+> **note** In TypeScript, decorators do not yet affect types.
+
+```ts
+import {
+  type Emplaceable,
+  emplaceable,
+} from "https://deno.land/x/upsert/mod.ts";
+import { assert } from "https://deno.land/std/testing/asserts.ts";
+
+@emplaceable
+class MyMap<K, V> extends Map<K, V> {}
+interface MyMap<K, V> extends Emplaceable<K, V> {}
 
 assert(MyMap.prototype.emplace);
 ```

@@ -36,15 +36,28 @@ export function emplace<K, V, M>(
  *
  * @example
  * ```ts
- * import { Emplaceable } from "https://deno.land/x/upsert/mixin.ts";
+ * import { emplaceable } from "https://deno.land/x/upsert/mixin.ts";
  * import { assert } from "https://deno.land/std/testing/asserts.ts";
  *
- * class MyMap extends Emplaceable(Map) {}
+ * class MyMap extends emplaceable(Map) {}
  *
  * assert(MyMap.prototype.emplace);
  * ```
+ *
+ * decorator style:
+ *
+ * @example
+ * ```ts
+ * import { emplaceable, type Emplaceable } from "https://deno.land/x/upsert/mixin.ts";
+ * import { assert } from "https://deno.land/std/testing/asserts.ts";
+ *
+ * @emplaceable
+ * class MyMap<K, V> extends Map<K, V> {}
+ * interface MyMap<K, V> extends Emplaceable<K, V> {}
+ * assert(MyMap.prototype.emplace);
+ * ```
  */
-export function Emplaceable<
+export function emplaceable<
   // deno-lint-ignore no-explicit-any
   T extends { new (...args: any): MapLike<never, never> },
 >(ctor: T) {
@@ -52,6 +65,22 @@ export function Emplaceable<
     emplace = emplace;
   };
 }
+
+/** Mixin for {@link emplace}.
+ *
+ * @example
+ * ```ts
+ * import { Emplaceable } from "https://deno.land/x/upsert/mixin.ts";
+ * import { assert } from "https://deno.land/std/testing/asserts.ts";
+ *
+ * class MyMap extends Emplaceable(Map) {}
+ *
+ * assert(MyMap.prototype.emplace);
+ * ```
+ *
+ * @deprecated rename to {@link emplaceable}.
+ */
+export const Emplaceable = emplaceable;
 
 /** Emplaceable API. */
 export interface Emplaceable<K, V> {

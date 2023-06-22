@@ -1,6 +1,6 @@
 // Copyright © 2023 Tomoki Miyauchi. All rights reserved. MIT license.
 
-import { emplace, Emplaceable } from "./mixin.ts";
+import { emplace, Emplaceable, emplaceable } from "./mixin.ts";
 import {
   assert,
   assertEquals,
@@ -22,8 +22,12 @@ describe("emplace", () => {
   });
 });
 
-describe("Emplaceable", () => {
-  it("should", () => {
-    assert(Reflect.construct(Emplaceable(Map), []).emplace === emplace);
+describe("emplaceable", () => {
+  it("should mixin emplace member", () => {
+    assert(Reflect.construct(emplaceable(Map), []).emplace === emplace);
+  });
+
+  it("should same ref", () => {
+    assert(emplaceable === Emplaceable);
   });
 });
