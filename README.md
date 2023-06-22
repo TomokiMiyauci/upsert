@@ -8,6 +8,8 @@
 
 [![test](https://github.com/TomokiMiyauci/upsert/actions/workflows/test.yaml/badge.svg)](https://github.com/TomokiMiyauci/upsert/actions/workflows/test.yaml)
 [![NPM](https://nodei.co/npm/@miyauci/upsert.png?mini=true)](https://nodei.co/npm/@miyauci/upsert/)
+[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg)](https://github.com/RichardLitt/standard-readme)
+[![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
 Maps for emplace, TC39
 [proposal-upsert](https://github.com/tc39/proposal-upsert) implementation.
