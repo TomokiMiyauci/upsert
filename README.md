@@ -18,8 +18,10 @@ Maps for emplace, TC39
 
 - [Install](#install)
 - [Usage](#usage)
-  - [Just insert if missing](#just-insert-if-missing)
-  - [Just update if present](#just-update-if-present)
+  - [Insert](#insert)
+    - [Just insert](#just-insert)
+  - [Update](#update)
+    - [Just update](#just-update)
   - [Emplaceable](#emplaceable)
   - [EmplaceableMap](#emplaceablemap)
   - [EmplaceableWeakMap](#emplaceableweakmap)
@@ -61,10 +63,9 @@ const result = emplace(map, key, {
 assert(map.has(key));
 ```
 
-### Just insert if missing
+### Insert
 
-You might omit an `update` if you're handling data that doesn't change, but can
-still be appended.
+Add the entry if the key does not exist.
 
 ```ts
 import { emplace } from "https://deno.land/x/upsert/mod.ts";
@@ -84,10 +85,26 @@ assert(map.has(key));
 assertType<IsExact<typeof result, number>>(true);
 ```
 
-### Just update if present
+#### Just insert
 
-You might want to omit an `insert` if you want to perform a function on all
-existing values.
+If only inserting is required, `insert` is available.
+
+```ts
+import { insert } from "https://deno.land/x/upsert/mod.ts";
+import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+
+declare const key: string;
+declare const value: number;
+const map = new Map<typeof key, typeof value>();
+
+insert(map, key, () => value);
+
+assertEquals(map, new Map([[key, value]]));
+```
+
+### Update
+
+Update the entry if the key exists.
 
 ```ts
 import { emplace } from "https://deno.land/x/upsert/mod.ts";
@@ -100,9 +117,25 @@ import {
 declare const map: Map<string, number>;
 declare const key: string;
 
-const result = emplace(map, key, { update: (existing) => existing + 1 });
+const result = emplace(map, key, { update: (existing) => ++existing });
 
 assertType<IsExact<typeof result, number | undefined>>(true);
+```
+
+#### Just update
+
+If only updating is required, `update` is available.
+
+```ts
+import { update } from "https://deno.land/x/upsert/mod.ts";
+import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+
+declare const key: string;
+const map = new Map([[key, 0]]);
+
+update(map, key, (existing) => ++existing);
+
+assertEquals(map, new Map([[key, 1]]));
 ```
 
 ### Emplaceable

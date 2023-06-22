@@ -131,14 +131,22 @@ export function emplace<K, V, M>(
   return;
 }
 
-const _insert: typeof insert = (map, key, callback) => {
-  const inserted = callback(key, map);
-
-  map.set(key, inserted);
-
-  return inserted;
-};
-
+/** Add the entry if the {@link key} does not exist.
+ *
+ * @example
+ * ```ts
+ * import { insert } from "https://deno.land/x/upsert/mod.ts";
+ * import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+ *
+ * declare const key: string;
+ * declare const value: number;
+ * const map = new Map<typeof key, typeof value>();
+ *
+ * insert(map, key, () => value);
+ *
+ * assertEquals(map, new Map([[key, value]]));
+ * ```
+ */
 export function insert<K, V, M = MapLike<K, V>>(
   map: Readonly<MapLike<K, V>> & M,
   key: K,
@@ -148,6 +156,39 @@ export function insert<K, V, M = MapLike<K, V>>(
 
   return _insert(map, key, callback);
 }
+
+/** Update the entry if the {@link key} exists.
+ *
+ * @example
+ * ```ts
+ * import { update } from "https://deno.land/x/upsert/mod.ts";
+ * import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+ *
+ * declare const key: string;
+ * const map = new Map([[key, 0]]);
+ *
+ * update(map, key, (existing) => ++existing);
+ *
+ * assertEquals(map, new Map([[key, 1]]));
+ * ```
+ */
+export function update<K, V, M = MapLike<K, V>>(
+  map: Readonly<MapLike<K, V>> & M,
+  key: K,
+  callback: UpdateCallback<K, V, M>,
+): V | undefined {
+  if (map.has(key)) return _update(map.get(key)!, key, map, callback);
+
+  return;
+}
+
+const _insert: typeof insert = (map, key, callback) => {
+  const inserted = callback(key, map);
+
+  map.set(key, inserted);
+
+  return inserted;
+};
 
 function _update<K, V, M = MapLike<K, V>>(
   value: V,
@@ -160,14 +201,4 @@ function _update<K, V, M = MapLike<K, V>>(
   map.set(key, updated);
 
   return updated;
-}
-
-export function update<K, V, M = MapLike<K, V>>(
-  map: Readonly<MapLike<K, V>> & M,
-  key: K,
-  callback: UpdateCallback<K, V, M>,
-): V | undefined {
-  if (map.has(key)) return _update(map.get(key)!, key, map, callback);
-
-  return;
 }

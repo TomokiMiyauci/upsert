@@ -1,6 +1,6 @@
 // Copyright © 2023 Tomoki Miyauchi. All rights reserved. MIT license.
 
-import { emplace } from "./emplace.ts";
+import { emplace, insert, update } from "./emplace.ts";
 import {
   assert,
   assertEquals,
@@ -119,5 +119,61 @@ describe("emplace", () => {
 
     assert(map.has(KEY));
     assertEquals(emplace(map, KEY, handler), VALUE);
+  });
+});
+
+describe("insert", () => {
+  it("should call if the key does not exist", () => {
+    const KEY = "";
+    const VALUE = 1;
+    const handler = spy(() => VALUE);
+    const map = new Map();
+
+    assertEquals(insert(map, KEY, handler), VALUE);
+    assertEquals(map, new Map([[KEY, VALUE]]));
+
+    assertSpyCalls(handler, 1);
+    assertSpyCallArgs(handler, 0, [KEY, map]);
+  });
+
+  it("should not call if the key exists", () => {
+    const KEY = "";
+    const VALUE = 0;
+    const handler = spy(() => 1);
+    const map = new Map([[KEY, VALUE]]);
+
+    assert(map.has(KEY));
+    assertEquals(insert(map, KEY, handler), VALUE);
+    assertEquals(map, new Map([[KEY, VALUE]]));
+
+    assertSpyCalls(handler, 0);
+  });
+});
+
+describe("update", () => {
+  it("should call if the key exists", () => {
+    const KEY = "";
+    const VALUE = 0;
+    const handler = spy((existing: number) => ++existing);
+    const map = new Map([[KEY, VALUE]]);
+
+    assert(map.has(KEY));
+    assertEquals(update(map, KEY, handler), VALUE + 1);
+    assertEquals(map, new Map([[KEY, VALUE + 1]]));
+
+    assertSpyCalls(handler, 1);
+    assertSpyCallArgs(handler, 0, [VALUE, KEY, map]);
+  });
+
+  it("should not call if the key does not exist", () => {
+    const KEY = "";
+    const VALUE = 1;
+    const handler = spy(() => VALUE);
+    const map = new Map();
+
+    assertEquals(update(map, KEY, handler), undefined);
+    assertEquals(map, new Map());
+
+    assertSpyCalls(handler, 0);
   });
 });

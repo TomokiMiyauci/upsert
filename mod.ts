@@ -5,8 +5,10 @@ export { Emplaceable } from "./mixin.ts";
 export {
   emplace,
   type EmplaceHandler,
+  insert,
   type Insertable,
   type MapLike,
   type Updatable,
+  update,
 } from "./emplace.ts";
 export { EmplaceableMap, EmplaceableWeakMap } from "./class.ts";
