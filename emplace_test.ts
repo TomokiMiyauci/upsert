@@ -2,6 +2,7 @@
 
 import { emplace } from "./emplace.ts";
 import {
+  assert,
   assertEquals,
   assertSpyCallArgs,
   assertSpyCalls,
@@ -84,5 +85,39 @@ describe("emplace", () => {
     assertEquals(emplace(map, KEY, { insert }), VALUE);
     assertEquals(map.get(KEY), VALUE);
     assertSpyCalls(insert, 0);
+  });
+
+  it("should work with binding insert", () => {
+    class Handler {
+      value = VALUE;
+      insert() {
+        return this.value;
+      }
+    }
+
+    const VALUE = 0;
+    const handler = new Handler();
+    const map = new Map<string, number>();
+    const KEY = "";
+
+    assertEquals(emplace(map, KEY, handler), VALUE);
+    assertEquals(map.get(KEY), VALUE);
+  });
+
+  it("should work with binding update", () => {
+    class Handler {
+      value = VALUE;
+      update(v: number) {
+        return v + this.value;
+      }
+    }
+
+    const VALUE = 1;
+    const handler = new Handler();
+    const KEY = "";
+    const map = new Map<string, number>([[KEY, 0]]);
+
+    assert(map.has(KEY));
+    assertEquals(emplace(map, KEY, handler), VALUE);
   });
 });
