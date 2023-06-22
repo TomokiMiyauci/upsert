@@ -12,18 +12,19 @@
 Maps for emplace, TC39
 [proposal-upsert](https://github.com/tc39/proposal-upsert) implementation.
 
-## Entrypoint
+## Install
 
-This project provides ponyfill and polyfill.
+deno.land:
 
-Polyfill has a side effect, so its endpoints are isolated.
+```ts
+import * as mod from "https://deno.land/x/upsert@$VERSION/mod.ts";
+```
 
-The entrypoint of each are as follows:
+npm:
 
-| Type     | Entrypoint    |
-| -------- | ------------- |
-| Ponyfill | `mod.ts`      |
-| Polyfill | `polyfill.ts` |
+```bash
+npm i @miyauci/upsert
+```
 
 ## Emplace
 
