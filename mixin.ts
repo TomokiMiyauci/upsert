@@ -41,7 +41,7 @@ export function emplace<K, V, M>(
  *
  * class MyMap extends Emplaceable(Map) {}
  *
- * assert(new MyMap().emplace);
+ * assert(MyMap.prototype.emplace);
  * ```
  */
 export function Emplaceable<

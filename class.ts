@@ -8,17 +8,15 @@ import { Emplaceable } from "./mixin.ts";
  * @example
  * ```ts
  * import { EmplaceableMap } from "https://deno.land/x/upsert/mod.ts";
- * import { assert } from "https://deno.land/std/testing/asserts.ts";
+ * import {
+ *   assert,
+ *   assertInstanceOf,
+ * } from "https://deno.land/std/testing/asserts.ts";
  *
  * const map = new EmplaceableMap<string, number>();
- * declare const key: string;
  *
- * map.emplace(key, {
- *  insert: () => 0,
- *  update: (existing) => existing + 1,
- * });
- *
- * assert(map.has(key));
+ * assertInstanceOf(map, Map);
+ * assert(map.emplace);
  * ```
  */
 export class EmplaceableMap<K, V>
@@ -28,9 +26,16 @@ export class EmplaceableMap<K, V>
  *
  * @example
  * ```ts
- * import { EmplaceableWeakMap } from "https://deno.land/x/upsert/class.ts";
+ * import { EmplaceableWeakMap } from "https://deno.land/x/upsert/mod.ts";
+ * import {
+ *  assert,
+ *  assertInstanceOf,
+ * } from "https://deno.land/std/testing/asserts.ts";
  *
  * const weakMap = new EmplaceableWeakMap();
+ *
+ * assertInstanceOf(weakMap, WeakMap);
+ * assert(weakMap.emplace);
  * ```
  */
 // deno-lint-ignore ban-types

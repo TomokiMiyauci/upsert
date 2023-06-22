@@ -115,7 +115,7 @@ import { assert } from "https://deno.land/std/testing/asserts.ts";
 
 class MyMap extends Emplaceable(Map) {}
 
-assert(new MyMap().emplace);
+assert(MyMap.prototype.emplace);
 ```
 
 ### EmplaceableMap
@@ -124,17 +124,15 @@ assert(new MyMap().emplace);
 
 ```ts
 import { EmplaceableMap } from "https://deno.land/x/upsert/mod.ts";
-import { assert } from "https://deno.land/std/testing/asserts.ts";
+import {
+  assert,
+  assertInstanceOf,
+} from "https://deno.land/std/testing/asserts.ts";
 
 const map = new EmplaceableMap<string, number>();
-declare const key: string;
 
-map.emplace(key, {
-  insert: () => 0,
-  update: (existing) => ++existing,
-});
-
-assert(map.has(key));
+assertInstanceOf(map, Map);
+assert(map.emplace);
 ```
 
 ### EmplaceableWeakMap
@@ -143,8 +141,15 @@ assert(map.has(key));
 
 ```ts
 import { EmplaceableWeakMap } from "https://deno.land/x/upsert/mod.ts";
+import {
+  assert,
+  assertInstanceOf,
+} from "https://deno.land/std/testing/asserts.ts";
 
 const weakMap = new EmplaceableWeakMap();
+
+assertInstanceOf(weakMap, WeakMap);
+assert(weakMap.emplace);
 ```
 
 ### Polyfill
