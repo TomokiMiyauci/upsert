@@ -26,7 +26,7 @@ npm:
 npm i @miyauci/upsert
 ```
 
-## Emplace
+## Usage
 
 Add a value to a map like if it does not already have something at `key`, and
 will also update an existing value at `key`.
@@ -89,9 +89,9 @@ const result = emplace(map, key, { update: (existing) => existing + 1 });
 assertType<IsExact<typeof result, number | undefined>>(true);
 ```
 
-## Emplaceable
+### Emplaceable
 
-Mixin for [emplace](#emplace).
+Mixin for `emplace`.
 
 ```ts
 import { Emplaceable } from "https://deno.land/x/upsert/mod.ts";
@@ -102,7 +102,7 @@ class MyMap extends Emplaceable(Map) {}
 assert(new MyMap().emplace);
 ```
 
-## EmplaceableMap
+### EmplaceableMap
 
 `Map` with [Emplaceable](#emplaceable) implementation.
 
@@ -121,7 +121,7 @@ map.emplace(key, {
 assert(map.has(key));
 ```
 
-## EmplaceableWeakMap
+### EmplaceableWeakMap
 
 `WeakMap` with [Emplaceable](#emplaceable) implementation.
 
@@ -131,7 +131,7 @@ import { EmplaceableWeakMap } from "https://deno.land/x/upsert/mod.ts";
 const weakMap = new EmplaceableWeakMap();
 ```
 
-## Polyfill
+### Polyfill
 
 Polyfill affects the global object. You must be very careful when using it.
 
