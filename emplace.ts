@@ -16,13 +16,21 @@ export interface MapLike<K, V> {
 /** Insertable API. */
 export interface Insertable<K, V, T> {
   /** Add entry. */
-  insert: (key: K, map: T) => V;
+  insert: InsertCallback<K, V, T>;
+}
+
+export interface InsertCallback<K, V, T = unknown> {
+  (key: K, that: T): V;
 }
 
 /** Updatable API. */
 export interface Updatable<K, V, T> {
   /** Update the value. */
-  update: (existing: V, key: K, map: T) => V;
+  update: UpdateCallback<K, V, T>;
+}
+
+export interface UpdateCallback<K, V, T> {
+  (existing: V, key: K, that: T): V;
 }
 
 /** Handler for emplace. */
@@ -111,24 +119,86 @@ export function emplace<K, V, M>(
   if (map.has(key)) {
     const value = map.get(key)!;
 
-    if ("update" in handler) {
-      const updated = handler.update(value, key, map);
-
-      map.set(key, updated);
-
-      return updated;
-    } else {
-      return value;
-    }
+    return "update" in handler
+      ? _update(value, key, map, handler.update.bind(handler))
+      : value;
   }
 
   if ("insert" in handler) {
-    const inserted = handler.insert(key, map);
-
-    map.set(key, inserted);
-
-    return inserted;
+    return _insert(map, key, handler.insert.bind(handler));
   }
 
   return;
+}
+
+/** Add the entry if the {@link key} does not exist.
+ *
+ * @example
+ * ```ts
+ * import { insert } from "https://deno.land/x/upsert/mod.ts";
+ * import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+ *
+ * declare const key: string;
+ * declare const value: number;
+ * const map = new Map<typeof key, typeof value>();
+ *
+ * insert(map, key, () => value);
+ *
+ * assertEquals(map, new Map([[key, value]]));
+ * ```
+ */
+export function insert<K, V, M = MapLike<K, V>>(
+  map: Readonly<MapLike<K, V>> & M,
+  key: K,
+  callback: InsertCallback<K, V, M>,
+): V {
+  if (map.has(key)) return map.get(key)!;
+
+  return _insert(map, key, callback);
+}
+
+/** Update the entry if the {@link key} exists.
+ *
+ * @example
+ * ```ts
+ * import { update } from "https://deno.land/x/upsert/mod.ts";
+ * import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+ *
+ * declare const key: string;
+ * const map = new Map([[key, 0]]);
+ *
+ * update(map, key, (existing) => ++existing);
+ *
+ * assertEquals(map, new Map([[key, 1]]));
+ * ```
+ */
+export function update<K, V, M = MapLike<K, V>>(
+  map: Readonly<MapLike<K, V>> & M,
+  key: K,
+  callback: UpdateCallback<K, V, M>,
+): V | undefined {
+  if (map.has(key)) return _update(map.get(key)!, key, map, callback);
+
+  return;
+}
+
+const _insert: typeof insert = (map, key, callback) => {
+  const inserted = callback(key, map);
+
+  map.set(key, inserted);
+
+  return inserted;
+};
+
+function _update<K, V, M = MapLike<K, V>>(
+  value: V,
+  key: K,
+  map: Readonly<MapLike<K, V>> & M,
+  callback: UpdateCallback<K, V, M>,
+): V {
+  const updated = callback(value, key, map);
+
+  map.set(key, updated);
+
+  return updated;
 }

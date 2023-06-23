@@ -1,3 +1,11 @@
+# [1.2.0-beta.1](https://github.com/TomokiMiyauci/upsert/compare/1.1.0...1.2.0-beta.1) (2023-06-22)
+
+
+### Features
+
+* **emplace:** add `update` and `insert` function ([913ef76](https://github.com/TomokiMiyauci/upsert/commit/913ef7686ed7a186384aef0fd48b5f45d567db53)), closes [#3](https://github.com/TomokiMiyauci/upsert/issues/3)
+* **mixin:** rename `Emplaceable` to `emplaceable`, mark duplicated ([1d72001](https://github.com/TomokiMiyauci/upsert/commit/1d72001c1158c51776849f5b2a0291742b34f873))
+
 # [1.1.0](https://github.com/TomokiMiyauci/upsert/compare/1.0.0...1.1.0) (2023-06-14)
 
 
