@@ -41,8 +41,8 @@ export interface EmplaceHandler<K, V, T>
  *
  * @example
  * ```ts
- * import { emplace } from "https://deno.land/x/upsert/emplace.ts";
- * import { assert } from "https://deno.land/std/testing/asserts.ts";
+ * import { emplace } from "@miyauci/upsert";
+ * import { assert } from "@std/assert";
  *
  * declare const map: Map<string, number>;
  * declare const key: string;
@@ -59,12 +59,12 @@ export interface EmplaceHandler<K, V, T>
  * still be appended.
  *
  * ```ts
- * import { emplace } from "https://deno.land/x/upsert/emplace.ts";
- * import { assert } from "https://deno.land/std/testing/asserts.ts";
+ * import { emplace } from "@miyauci/upsert";
+ * import { assert } from "@std/assert";
  * import {
  *  assertType,
  *  type IsExact,
- * } from "https://deno.land/std/testing/types.ts";
+ * } from "@std/testing/types";
  *
  * declare const map: Map<string, number>;
  * declare const key: string;
@@ -81,12 +81,12 @@ export interface EmplaceHandler<K, V, T>
  * existing values.
  *
  * ```ts
- * import { emplace } from "https://deno.land/x/upsert/emplace.ts";
- * import { assert } from "https://deno.land/std/testing/asserts.ts";
+ * import { emplace } from "@miyauci/upsert";
+ * import { assert } from "@std/assert";
  * import {
  *  assertType,
  *  type IsExact,
- * } from "https://deno.land/std/testing/types.ts";
+ * } from "@std/testing/types";
  *
  * declare const map: Map<string, number>;
  * declare const key: string;
@@ -135,8 +135,8 @@ export function emplace<K, V, M>(
  *
  * @example
  * ```ts
- * import { insert } from "https://deno.land/x/upsert/mod.ts";
- * import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+ * import { insert } from "@miyauci/upsert";
+ * import { assertEquals } from "@std/assert";
  *
  * declare const key: string;
  * declare const value: number;
@@ -161,8 +161,8 @@ export function insert<K, V, M = MapLike<K, V>>(
  *
  * @example
  * ```ts
- * import { update } from "https://deno.land/x/upsert/mod.ts";
- * import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+ * import { update } from "@miyauci/upsert";
+ * import { assertEquals } from "@std/assert";
  *
  * declare const key: string;
  * const map = new Map([[key, 0]]);

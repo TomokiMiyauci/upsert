@@ -35,7 +35,7 @@ Maps for emplace, TC39
 deno.land:
 
 ```ts
-import * as mod from "https://deno.land/x/upsert/mod.ts";
+import * as mod from "@miyauci/upsert";
 ```
 
 npm:
@@ -50,8 +50,8 @@ Add a value to a map like if it does not already have something at `key`, and
 will also update an existing value at `key`.
 
 ```ts
-import { emplace } from "https://deno.land/x/upsert/mod.ts";
-import { assert } from "https://deno.land/std/testing/asserts.ts";
+import { emplace } from "@miyauci/upsert";
+import { assert } from "@std/assert";
 
 declare const map: Map<string, number>;
 declare const key: string;
@@ -68,12 +68,9 @@ assert(map.has(key));
 Add the entry if the key does not exist.
 
 ```ts
-import { emplace } from "https://deno.land/x/upsert/mod.ts";
-import { assert } from "https://deno.land/std/testing/asserts.ts";
-import {
-  assertType,
-  type IsExact,
-} from "https://deno.land/std/testing/types.ts";
+import { emplace } from "@miyauci/upsert";
+import { assert } from "@std/assert";
+import { assertType, type IsExact } from "@std/testing/types";
 
 declare const map: Map<string, number>;
 declare const key: string;
@@ -90,8 +87,8 @@ assertType<IsExact<typeof result, number>>(true);
 If only inserting is required, `insert` is available.
 
 ```ts
-import { insert } from "https://deno.land/x/upsert/mod.ts";
-import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+import { insert } from "@miyauci/upsert";
+import { assertEquals } from "@std/assert";
 
 declare const key: string;
 declare const value: number;
@@ -107,8 +104,8 @@ assertEquals(map, new Map([[key, value]]));
 Update the entry if the key exists.
 
 ```ts
-import { emplace } from "https://deno.land/x/upsert/mod.ts";
-import { assert } from "https://deno.land/std/testing/asserts.ts";
+import { emplace } from "@miyauci/upsert";
+import { assert } from "@std/assert";
 import {
   assertType,
   type IsExact,
@@ -127,8 +124,8 @@ assertType<IsExact<typeof result, number | undefined>>(true);
 If only updating is required, `update` is available.
 
 ```ts
-import { update } from "https://deno.land/x/upsert/mod.ts";
-import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+import { update } from "@miyauci/upsert";
+import { assertEquals } from "@std/assert";
 
 declare const key: string;
 const map = new Map([[key, 0]]);
@@ -143,28 +140,10 @@ assertEquals(map, new Map([[key, 1]]));
 Mixin for `emplace`.
 
 ```ts
-import { emplaceable } from "https://deno.land/x/upsert/mod.ts";
-import { assert } from "https://deno.land/std/testing/asserts.ts";
+import { emplaceable } from "@miyauci/upsert";
+import { assert } from "@std/assert";
 
 class MyMap extends emplaceable(Map) {}
-
-assert(MyMap.prototype.emplace);
-```
-
-decorator style:
-
-> **note** In TypeScript, decorators do not yet affect types.
-
-```ts
-import {
-  type Emplaceable,
-  emplaceable,
-} from "https://deno.land/x/upsert/mod.ts";
-import { assert } from "https://deno.land/std/testing/asserts.ts";
-
-@emplaceable
-class MyMap<K, V> extends Map<K, V> {}
-interface MyMap<K, V> extends Emplaceable<K, V> {}
 
 assert(MyMap.prototype.emplace);
 ```
@@ -174,11 +153,8 @@ assert(MyMap.prototype.emplace);
 `Map` with [Emplaceable](#emplaceable) implementation.
 
 ```ts
-import { EmplaceableMap } from "https://deno.land/x/upsert/mod.ts";
-import {
-  assert,
-  assertInstanceOf,
-} from "https://deno.land/std/testing/asserts.ts";
+import { EmplaceableMap } from "@miyauci/upsert";
+import { assert, assertInstanceOf } from "@std/assert";
 
 const map = new EmplaceableMap<string, number>();
 
@@ -191,11 +167,8 @@ assert(map.emplace);
 `WeakMap` with [Emplaceable](#emplaceable) implementation.
 
 ```ts
-import { EmplaceableWeakMap } from "https://deno.land/x/upsert/mod.ts";
-import {
-  assert,
-  assertInstanceOf,
-} from "https://deno.land/std/testing/asserts.ts";
+import { EmplaceableWeakMap } from "@miyauci/upsert";
+import { assert, assertInstanceOf } from "@std/assert";
 
 const weakMap = new EmplaceableWeakMap();
 
@@ -209,7 +182,7 @@ Polyfill affects the global object. You must be very careful when using it.
 
 ```ts
 import "https://deno.land/x/upsert/polyfill.ts";
-import { assert } from "https://deno.land/std/testing/asserts.ts";
+import { assert } from "@std/assert";
 
 assert(Map.prototype.emplace);
 assert(WeakMap.prototype.emplace);

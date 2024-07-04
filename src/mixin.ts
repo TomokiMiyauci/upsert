@@ -36,24 +36,11 @@ export function emplace<K, V, M>(
  *
  * @example
  * ```ts
- * import { emplaceable } from "https://deno.land/x/upsert/mixin.ts";
- * import { assert } from "https://deno.land/std/testing/asserts.ts";
+ * import { emplaceable } from "@miyauci/upsert";
+ * import { assert } from "@std/assert";
  *
  * class MyMap extends emplaceable(Map) {}
  *
- * assert(MyMap.prototype.emplace);
- * ```
- *
- * decorator style:
- *
- * @example
- * ```ts
- * import { emplaceable, type Emplaceable } from "https://deno.land/x/upsert/mixin.ts";
- * import { assert } from "https://deno.land/std/testing/asserts.ts";
- *
- * @emplaceable
- * class MyMap<K, V> extends Map<K, V> {}
- * interface MyMap<K, V> extends Emplaceable<K, V> {}
  * assert(MyMap.prototype.emplace);
  * ```
  */
@@ -70,8 +57,8 @@ export function emplaceable<
  *
  * @example
  * ```ts
- * import { Emplaceable } from "https://deno.land/x/upsert/mixin.ts";
- * import { assert } from "https://deno.land/std/testing/asserts.ts";
+ * import { Emplaceable } from "@miyauci/upsert";
+ * import { assert } from "@std/assert";
  *
  * class MyMap extends Emplaceable(Map) {}
  *

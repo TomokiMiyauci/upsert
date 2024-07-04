@@ -1,13 +1,8 @@
 // Copyright © 2023 Tomoki Miyauchi. All rights reserved. MIT license.
 
 import { emplace, Emplaceable, emplaceable } from "./mixin.ts";
-import {
-  assert,
-  assertEquals,
-  assertFalse,
-  describe,
-  it,
-} from "./_dev_deps.ts";
+import { describe, it } from "@std/testing/bdd";
+import { assert, assertEquals, assertFalse } from "@std/assert";
 
 describe("emplace", () => {
   it("should bind map and do emplace", () => {

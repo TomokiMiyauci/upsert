@@ -4,15 +4,14 @@
 /** Polyfill affects the global object. You must be very careful when using it.
  * @example
  * ```ts
- * import "https://deno.land/x/upsert/polyfill.ts";
- * import { assert } from "https://deno.land/std/testing/asserts.ts";
+ * import "@miyauci/upsert/polyfill";
+ * import { assert } from "@std/assert";
  *
  * assert(Map.prototype.emplace);
  * assert(WeakMap.prototype.emplace);
  * ```
  */
 
-// deno-lint-ignore-file no-empty-interface
 import { emplace, type Emplaceable } from "./mixin.ts";
 
 declare global {

@@ -1,8 +1,9 @@
 // Copyright © 2023 Tomoki Miyauchi. All rights reserved. MIT license.
 
-import "./polyfill.ts";
+import "../src/polyfill.ts";
 import { emplace } from "./mixin.ts";
-import { assert, describe, it } from "./_dev_deps.ts";
+import { describe, it } from "@std/testing/bdd";
+import { assert } from "@std/assert";
 
 describe("prototype", () => {
   it("should has emplace", () => {

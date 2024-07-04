@@ -1,15 +1,9 @@
 // Copyright © 2023 Tomoki Miyauchi. All rights reserved. MIT license.
 
-import { emplace, insert, update } from "./emplace.ts";
-import {
-  assert,
-  assertEquals,
-  assertSpyCallArgs,
-  assertSpyCalls,
-  describe,
-  it,
-  spy,
-} from "./_dev_deps.ts";
+import { emplace, insert, update } from "../src/emplace.ts";
+import { describe, it } from "@std/testing/bdd";
+import { assertSpyCallArgs, assertSpyCalls, spy } from "@std/testing/mock";
+import { assert, assertEquals } from "@std/assert";
 
 describe("emplace", () => {
   it("should call insert if the key is not exist", () => {

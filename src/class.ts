@@ -7,11 +7,11 @@ import { Emplaceable } from "./mixin.ts";
  *
  * @example
  * ```ts
- * import { EmplaceableMap } from "https://deno.land/x/upsert/mod.ts";
+ * import { EmplaceableMap } from "@miyauci/upsert";
  * import {
  *   assert,
  *   assertInstanceOf,
- * } from "https://deno.land/std/testing/asserts.ts";
+ * } from "@std/assert";
  *
  * const map = new EmplaceableMap<string, number>();
  *
@@ -26,11 +26,11 @@ export class EmplaceableMap<K, V>
  *
  * @example
  * ```ts
- * import { EmplaceableWeakMap } from "https://deno.land/x/upsert/mod.ts";
+ * import { EmplaceableWeakMap } from "@miyauci/upsert";
  * import {
  *  assert,
  *  assertInstanceOf,
- * } from "https://deno.land/std/testing/asserts.ts";
+ * } from "@std/assert";
  *
  * const weakMap = new EmplaceableWeakMap();
  *
@@ -38,6 +38,5 @@ export class EmplaceableMap<K, V>
  * assert(weakMap.emplace);
  * ```
  */
-// deno-lint-ignore ban-types
 export class EmplaceableWeakMap<K extends object, V>
   extends /* @__PURE__ */ Emplaceable(WeakMap)<K, V> {}
