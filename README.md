@@ -1,15 +1,10 @@
 # upsert
 
-[![deno land](http://img.shields.io/badge/available%20on-deno.land/x-lightgrey.svg?logo=deno)](https://deno.land/x/upsert)
-[![deno doc](https://doc.deno.land/badge.svg)](https://deno.land/x/upsert?doc)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/TomokiMiyauci/upsert)](https://github.com/TomokiMiyauci/upsert/releases)
-[![codecov](https://codecov.io/github/TomokiMiyauci/upsert/branch/main/graph/badge.svg)](https://codecov.io/gh/TomokiMiyauci/upsert)
-[![License](https://img.shields.io/github/license/TomokiMiyauci/upsert)](LICENSE)
-
-[![test](https://github.com/TomokiMiyauci/upsert/actions/workflows/test.yaml/badge.svg)](https://github.com/TomokiMiyauci/upsert/actions/workflows/test.yaml)
-[![NPM](https://nodei.co/npm/@miyauci/upsert.png?mini=true)](https://nodei.co/npm/@miyauci/upsert/)
-[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg)](https://github.com/RichardLitt/standard-readme)
+[![JSR](https://jsr.io/badges/@miyauci/upsert)](https://jsr.io/@miyauci/upsert)
+[![codecov](https://codecov.io/gh/TomokiMiyauci/upsert/graph/badge.svg?token=W5tklO7mHB)](https://codecov.io/gh/TomokiMiyauci/upsert)
+[![GitHub](https://img.shields.io/github/license/TomokiMiyauci/upsert)](https://github.com/TomokiMiyauci/upsert/blob/main/LICENSE)
 [![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
+[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg)](https://github.com/RichardLitt/standard-readme)
 
 Maps for emplace, TC39
 [proposal-upsert](https://github.com/tc39/proposal-upsert) implementation.
@@ -32,16 +27,16 @@ Maps for emplace, TC39
 
 ## Install
 
-deno.land:
-
-```ts
-import * as mod from "@miyauci/upsert";
-```
-
-npm:
+deno:
 
 ```bash
-npm i @miyauci/upsert
+deno add @miyauci/upsert
+```
+
+node:
+
+```bash
+npx jsr add @miyauci/upsert
 ```
 
 ## Usage
@@ -106,10 +101,7 @@ Update the entry if the key exists.
 ```ts
 import { emplace } from "@miyauci/upsert";
 import { assert } from "@std/assert";
-import {
-  assertType,
-  type IsExact,
-} from "https://deno.land/std/testing/types.ts";
+import { assertType, type IsExact } from "@std/testing/types";
 
 declare const map: Map<string, number>;
 declare const key: string;
@@ -181,7 +173,7 @@ assert(weakMap.emplace);
 Polyfill affects the global object. You must be very careful when using it.
 
 ```ts
-import "https://deno.land/x/upsert/polyfill.ts";
+import "@miyauci/upsert/polyfill";
 import { assert } from "@std/assert";
 
 assert(Map.prototype.emplace);
