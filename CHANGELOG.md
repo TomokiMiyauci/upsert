@@ -1,13 +1,11 @@
 # [1.2.0](https://github.com/TomokiMiyauci/upsert/compare/1.1.0...1.2.0) (2023-06-23)
 
-
 ### Features
 
 * **emplace:** add `update` and `insert` function ([913ef76](https://github.com/TomokiMiyauci/upsert/commit/913ef7686ed7a186384aef0fd48b5f45d567db53)), closes [#3](https://github.com/TomokiMiyauci/upsert/issues/3)
 * **mixin:** rename `Emplaceable` to `emplaceable`, mark duplicated ([1d72001](https://github.com/TomokiMiyauci/upsert/commit/1d72001c1158c51776849f5b2a0291742b34f873))
 
 # [1.2.0-beta.1](https://github.com/TomokiMiyauci/upsert/compare/1.1.0...1.2.0-beta.1) (2023-06-22)
-
 
 ### Features
 
@@ -16,20 +14,17 @@
 
 # [1.1.0](https://github.com/TomokiMiyauci/upsert/compare/1.0.0...1.1.0) (2023-06-14)
 
-
 ### Features
 
 * improve method overload signature ([db0d137](https://github.com/TomokiMiyauci/upsert/commit/db0d137f72d99f67a402241e16c57b6a6ac0279a))
 
 # [1.1.0-beta.1](https://github.com/TomokiMiyauci/upsert/compare/1.0.0...1.1.0-beta.1) (2023-06-14)
 
-
 ### Features
 
 * improve method overload signature ([db0d137](https://github.com/TomokiMiyauci/upsert/commit/db0d137f72d99f67a402241e16c57b6a6ac0279a))
 
 # 1.0.0 (2023-06-13)
-
 
 ### Features
 
@@ -43,7 +38,6 @@
 
 # [1.0.0-beta.2](https://github.com/TomokiMiyauci/upsert/compare/1.0.0-beta.1...1.0.0-beta.2) (2023-06-13)
 
-
 ### Features
 
 * **emplace:** accept partial handler ([db4ddbe](https://github.com/TomokiMiyauci/upsert/commit/db4ddbe0865ad3c680369317f0d56ddc04c83634))
@@ -51,7 +45,6 @@
 * pass map instance to arg ([d5b4c9d](https://github.com/TomokiMiyauci/upsert/commit/d5b4c9dd61c58d2f79223daa4b6e3c59b826a977))
 
 # 1.0.0-beta.1 (2023-06-13)
-
 
 ### Features
 
