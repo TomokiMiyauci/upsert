@@ -3,7 +3,8 @@
 
 /// <reference path="./polyfill.d.ts" />
 
-/** Polyfill affects the global object. You must be very careful when using it.
+/** Polyfill affects the global object.
+ *
  * @example
  * ```ts
  * import "@miyauci/upsert/polyfill";
@@ -12,6 +13,8 @@
  * assert(Map.prototype.emplace);
  * assert(WeakMap.prototype.emplace);
  * ```
+ *
+ * @module
  */
 
 import { emplace } from "./mixin.ts";
