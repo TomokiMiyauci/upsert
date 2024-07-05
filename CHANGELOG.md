@@ -1,3 +1,10 @@
+# [1.3.0-beta.1](https://github.com/TomokiMiyauci/upsert/compare/1.2.0...1.3.0-beta.1) (2024-07-05)
+
+
+### Features
+
+* publish package to jsr ([65a8f8a](https://github.com/TomokiMiyauci/upsert/commit/65a8f8ad893f6ce242ddaf7f26c9d8867b368796))
+
 # [1.2.0](https://github.com/TomokiMiyauci/upsert/compare/1.1.0...1.2.0) (2023-06-23)
 
 ### Features
