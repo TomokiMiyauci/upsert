@@ -182,7 +182,7 @@ assert(WeakMap.prototype.emplace);
 
 ## API
 
-See [deno doc](https://deno.land/x/upsert?doc) for all APIs.
+See [jsr doc](https://jsr.io/@miyauci/upsert) for all APIs.
 
 ## Contributing
 
