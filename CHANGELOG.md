@@ -1,3 +1,10 @@
+# [1.3.0-beta.4](https://github.com/TomokiMiyauci/upsert/compare/1.3.0-beta.3...1.3.0-beta.4) (2024-07-05)
+
+
+### Bug Fixes
+
+* **class:** change superclass extension into a variable ([ad02c2b](https://github.com/TomokiMiyauci/upsert/commit/ad02c2bd2b1ae6122e7a596458a3acfe464a0f26))
+
 # [1.3.0-beta.3](https://github.com/TomokiMiyauci/upsert/compare/1.3.0-beta.2...1.3.0-beta.3) (2024-07-05)
 
 
