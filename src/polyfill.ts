@@ -1,6 +1,8 @@
 // Copyright © 2023 Tomoki Miyauchi. All rights reserved. MIT license.
 // This module is browser compatible.
 
+/// <reference path="./polyfill.d.ts" />
+
 /** Polyfill affects the global object. You must be very careful when using it.
  * @example
  * ```ts
@@ -13,7 +15,6 @@
  */
 
 import { emplace } from "./mixin.ts";
-import "./polyfill.d.ts";
 
 Map.prototype.emplace = emplace;
 WeakMap.prototype.emplace = emplace;
