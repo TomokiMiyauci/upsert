@@ -1,3 +1,17 @@
+# [1.3.0](https://github.com/TomokiMiyauci/upsert/compare/1.2.0...1.3.0) (2024-07-05)
+
+
+### Bug Fixes
+
+* **class:** change superclass extension into a variable ([ad02c2b](https://github.com/TomokiMiyauci/upsert/commit/ad02c2bd2b1ae6122e7a596458a3acfe464a0f26))
+* **polyfill:** export polyfill script and global declaration ([9ec92cb](https://github.com/TomokiMiyauci/upsert/commit/9ec92cbd7ba24c48d0c482d490a7d4c78f3f382b))
+* remove global declaration for avoid jsr restriction ([c7364e1](https://github.com/TomokiMiyauci/upsert/commit/c7364e12aaf08d823668a3a4c71f0104223e5e1e))
+
+
+### Features
+
+* publish package to jsr ([65a8f8a](https://github.com/TomokiMiyauci/upsert/commit/65a8f8ad893f6ce242ddaf7f26c9d8867b368796))
+
 # [1.3.0-beta.4](https://github.com/TomokiMiyauci/upsert/compare/1.3.0-beta.3...1.3.0-beta.4) (2024-07-05)
 
 
