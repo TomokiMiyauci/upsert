@@ -12,13 +12,8 @@
  * ```
  */
 
-import { emplace, type Emplaceable } from "./mixin.ts";
-
-declare global {
-  interface Map<K, V> extends Emplaceable<K, V> {}
-
-  interface WeakMap<K, V> extends Emplaceable<K, V> {}
-}
+import { emplace } from "./mixin.ts";
+import "./polyfill.d.ts";
 
 Map.prototype.emplace = emplace;
 WeakMap.prototype.emplace = emplace;
