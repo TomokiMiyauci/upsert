@@ -25,6 +25,6 @@
   },
   "exports": {
     ".": "./src/mod.ts",
-    "polyfill": "./src/polyfill.ts"
+    "./polyfill": "./src/polyfill.ts"
   }
 }
