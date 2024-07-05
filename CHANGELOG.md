@@ -1,3 +1,10 @@
+# [1.3.0-beta.2](https://github.com/TomokiMiyauci/upsert/compare/1.3.0-beta.1...1.3.0-beta.2) (2024-07-05)
+
+
+### Bug Fixes
+
+* remove global declaration for avoid jsr restriction ([c7364e1](https://github.com/TomokiMiyauci/upsert/commit/c7364e12aaf08d823668a3a4c71f0104223e5e1e))
+
 # [1.3.0-beta.1](https://github.com/TomokiMiyauci/upsert/compare/1.2.0...1.3.0-beta.1) (2024-07-05)
 
 
