@@ -1,7 +1,8 @@
 // Copyright © 2023 Tomoki Miyauchi. All rights reserved. MIT license.
 
-import { EmplaceableMap, EmplaceableWeakMap } from "./class.ts";
-import { assertEquals, describe, it } from "./_dev_deps.ts";
+import { EmplaceableMap, EmplaceableWeakMap } from "../src/class.ts";
+import { describe, it } from "@std/testing/bdd";
+import { assertEquals } from "@std/assert";
 
 describe("EmplaceableMap", () => {
   it("should implement emplace", () => {
@@ -20,7 +21,6 @@ describe("EmplaceableMap", () => {
 describe("EmplaceableWeakMap", () => {
   it("should implement emplace", () => {
     const key = {};
-    // deno-lint-ignore ban-types
     const map = new EmplaceableWeakMap<object, number>([[key, 0]]);
 
     assertEquals(
